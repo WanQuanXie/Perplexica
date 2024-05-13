@@ -4,9 +4,9 @@
   "license": "MIT",
   "author": "ItzCrazyKns",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "next build",
-    "start": "next start",
+    "serve": "next build && node .next/standalone/server.js",
     "lint": "next lint",
     "format:write": "prettier . --write"
   },
