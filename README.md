@@ -10,7 +10,7 @@
 - [Installation](#installation)
   - [Getting Started with Docker (Recommended)](#getting-started-with-docker-recommended)
   - [Non-Docker Installation](#non-docker-installation)
-  - [Ollama connection errors](#ollama-connection-errors)
+  - [Ollama Connection Errors](#ollama-connection-errors)
 - [Using as a Search Engine](#using-as-a-search-engine)
 - [One-Click Deployment](#one-click-deployment)
 - [Upcoming Features](#upcoming-features)
@@ -85,25 +85,39 @@ There are mainly 2 ways of installing Perplexica - With Docker, Without Docker. 
 
 ### Non-Docker Installation
 
-1. Clone the repository and rename the `sample.config.toml` file to `config.toml` in the root directory. Ensure you complete all required fields in this file.
-2. Rename the `.env.example` file to `.env` in the `ui` folder and fill in all necessary fields.
-3. After populating the configuration and environment files, run `npm i` in both the `ui` folder and the root directory.
-4. Install the dependencies and then execute `npm run build` in both the `ui` folder and the root directory.
-5. Finally, start both the frontend and the backend by running `npm run start` in both the `ui` folder and the root directory.
+1. Install SearXNG and allow `JSON` format in the SearXNG settings.
+2. Clone the repository and rename the `sample.config.toml` file to `config.toml` in the root directory. Ensure you complete all required fields in this file.
+3. Rename the `.env.example` file to `.env` in the `ui` folder and fill in all necessary fields.
+4. After populating the configuration and environment files, run `npm i` in both the `ui` folder and the root directory.
+5. Install the dependencies and then execute `npm run build` in both the `ui` folder and the root directory.
+6. Finally, start both the frontend and the backend by running `npm run start` in both the `ui` folder and the root directory.
 
 **Note**: Using Docker is recommended as it simplifies the setup process, especially for managing environment variables and dependencies.
 
 See the [installation documentation](https://github.com/ItzCrazyKns/Perplexica/tree/master/docs/installation) for more information like exposing it your network, etc.
 
-### Ollama connection errors
+### Ollama Connection Errors
 
-If you're facing an Ollama connection error, it is often related to the backend not being able to connect to Ollama's API. How can you fix it? You can fix it by updating your Ollama API URL in the settings menu to the following:
+If you're encountering an Ollama connection error, it is likely due to the backend being unable to connect to Ollama's API. To fix this issue you can:
 
-On Windows: `http://host.docker.internal:11434`<br>
-On Mac: `http://host.docker.internal:11434`<br>
-On Linux: `http://private_ip_of_computer_hosting_ollama:11434`
+1. **Check your Ollama API URL:** Ensure that the API URL is correctly set in the settings menu.
+2. **Update API URL Based on OS:**
 
-You need to edit the ports accordingly.
+   - **Windows:** Use `http://host.docker.internal:11434`
+   - **Mac:** Use `http://host.docker.internal:11434`
+   - **Linux:** Use `http://<private_ip_of_host>:11434`
+
+   Adjust the port number if you're using a different one.
+
+3. **Linux Users - Expose Ollama to Network:**
+
+   - Serve Ollama over your network with the command:
+
+     ```bash
+     OLLAMA_HOST=0.0.0.0 ollama serve
+     ```
+
+   - Ensure that the port (default is 11434) is not blocked by your firewall.
 
 ## Using as a Search Engine
 
@@ -120,11 +134,12 @@ If you wish to use Perplexica as an alternative to traditional search engines li
 
 ## Upcoming Features
 
-- [ ] Finalizing Copilot Mode
 - [x] Add settings page
 - [x] Adding support for local LLMs
-- [ ] Adding Discover and History Saving features
+- [x] History Saving features
 - [x] Introducing various Focus Modes
+- [ ] Finalizing Copilot Mode
+- [ ] Adding Discover
 
 ## Support Us
 
@@ -132,11 +147,11 @@ If you find Perplexica useful, consider giving us a star on GitHub. This helps m
 
 ### Donations
 
-We also accept donations to help sustain our project. If you would like to contribute, you can use the following button to make a donation in cryptocurrency. Thank you for your support!
+We also accept donations to help sustain our project. If you would like to contribute, you can use the following options to donate. Thank you for your support!
 
-<a href="https://nowpayments.io/donation?api_key=RFFKJH1-GRR4DQG-HFV1DZP-00G6MMK&source=lk_donation&medium=referral" target="_blank">
-  <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Crypto donation button by NOWPayments">
-</a>
+| Cards  | Ethereum |
+|---|---|
+|  https://www.patreon.com/itzcrazykns  | Address: `0xB025a84b2F269570Eb8D4b05DEdaA41D8525B6DD`  |
 
 ## Contribution
 
