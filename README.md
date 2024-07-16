@@ -67,7 +67,8 @@ There are mainly 2 ways of installing Perplexica - With Docker, Without Docker. 
 
    - `OPENAI`: Your OpenAI API key. **You only need to fill this if you wish to use OpenAI's models**.
    - `OLLAMA`: Your Ollama API URL. You should enter it as `http://host.docker.internal:PORT_NUMBER`. If you installed Ollama on port 11434, use `http://host.docker.internal:11434`. For other ports, adjust accordingly. **You need to fill this if you wish to use Ollama's models instead of OpenAI's**.
-   - `GROQ`: Your Groq API key. **You only need to fill this if you wish to use Groq's hosted models**
+   - `GROQ`: Your Groq API key. **You only need to fill this if you wish to use Groq's hosted models**.
+   - `ANTHROPIC`: Your Anthropic API key. **You only need to fill this if you wish to use Anthropic models**.
 
      **Note**: You can change these after starting Perplexica from the settings dialog.
 
@@ -111,11 +112,7 @@ If you're encountering an Ollama connection error, it is likely due to the backe
 
 3. **Linux Users - Expose Ollama to Network:**
 
-   - Serve Ollama over your network with the command:
-
-     ```bash
-     OLLAMA_HOST=0.0.0.0 ollama serve
-     ```
+   - Inside `/etc/systemd/system/ollama.service`, you need to add `Environment="OLLAMA_HOST=0.0.0.0"`. Then restart Ollama by `systemctl restart ollama`. For more information see [Ollama docs](https://github.com/ollama/ollama/blob/main/docs/faq.md#setting-environment-variables-on-linux)
 
    - Ensure that the port (default is 11434) is not blocked by your firewall.
 
@@ -149,9 +146,9 @@ If you find Perplexica useful, consider giving us a star on GitHub. This helps m
 
 We also accept donations to help sustain our project. If you would like to contribute, you can use the following options to donate. Thank you for your support!
 
-| Cards  | Ethereum |
-|---|---|
-|  https://www.patreon.com/itzcrazykns  | Address: `0xB025a84b2F269570Eb8D4b05DEdaA41D8525B6DD`  |
+| Cards                               | Ethereum                                              |
+| ----------------------------------- | ----------------------------------------------------- |
+| https://www.patreon.com/itzcrazykns | Address: `0xB025a84b2F269570Eb8D4b05DEdaA41D8525B6DD` |
 
 ## Contribution
 
